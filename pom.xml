@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.javaoperatorsdk</groupId>
+  <groupId>ai.startree</groupId>
   <artifactId>operator-framework-spring-boot-starter-parent</artifactId>
   <version>1.9.0-SNAPSHOT</version>
   <name>Java Operator SDK Spring Boot Starter - Parent</name>
@@ -69,12 +69,12 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>io.javaoperatorsdk</groupId>
+        <groupId>ai.startree</groupId>
         <artifactId>operator-framework-spring-boot-starter</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>io.javaoperatorsdk</groupId>
+        <groupId>ai.startree</groupId>
         <artifactId>operator-framework-spring-boot-starter-test</artifactId>
         <version>${project.version}</version>
       </dependency>

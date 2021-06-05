@@ -6,7 +6,7 @@
 
   <parent>
     <artifactId>operator-framework-spring-boot-starter-samples-parent</artifactId>
-    <groupId>io.javaoperatorsdk</groupId>
+    <groupId>ai.startree</groupId>
     <version>1.9.0-SNAPSHOT</version>
   </parent>
 
@@ -26,12 +26,13 @@
 
   <dependencies>
     <dependency>
-      <groupId>io.javaoperatorsdk</groupId>
-      <artifactId>operator-framework-samples-common</artifactId>
+      <groupId>ai.startree</groupId>
+      <artifactId>operator-framework-spring-boot-starter</artifactId>
     </dependency>
+    
     <dependency>
       <groupId>io.javaoperatorsdk</groupId>
-      <artifactId>operator-framework-spring-boot-starter</artifactId>
+      <artifactId>operator-framework-samples-common</artifactId>
     </dependency>
     
     <dependency>
@@ -55,7 +56,7 @@
     </dependency>
 
     <dependency>
-      <groupId>io.javaoperatorsdk</groupId>
+      <groupId>ai.startree</groupId>
       <artifactId>operator-framework-spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>

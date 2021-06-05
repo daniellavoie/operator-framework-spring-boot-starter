@@ -1,0 +1,53 @@
+resource_types:
+- name: slack
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+    tag: latest
+
+resources:
+- name: ci-src
+  type: git
+  source: 
+    uri: ((git-uri))
+    branch: ((git-branch))
+    paths:
+    - .concourse
+
+- name: src
+  type: git
+  source: 
+    uri: ((git-uri))
+    branch: ((git-branch))
+    ignore_paths:
+    - .concourse
+
+- name: slack
+  type: slack
+  source:
+    url: ((slack-webhook-url))
+
+jobs:
+- name: deploy-snapshot
+  plan:
+  - get: ci-src
+  - get: src
+    trigger: true
+  - task: deploy-snapshot
+    privileged: true
+    file: ci-src/.concourse/tasks/deploy-snapshot/deploy-snapshot.yml
+  on_success:
+    put: slack
+    params:
+      channel: ((slack-channel))
+      text: |
+        Branch ((git-branch)) of StarTree Portal as been successfully built.
+        ((concourse-url))/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+  on_failure:
+    put: slack
+    params:
+      channel: ((slack-channel))
+      text: |
+        <!channel> Failed to build StarTree Portal ((git-branch)) branch.
+        ((concourse-url))/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+  

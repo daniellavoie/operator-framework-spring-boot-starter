@@ -1,0 +1,26 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: openjdk
+    tag: 11-jdk
+
+inputs:
+- name: ci-src
+- name: src
+
+outputs:
+- name: image
+
+caches: 
+- path: src/m2
+
+params:
+  MVN_REPOSITORY_URL: ((maven-repo-snapshot))
+  MVN_REPOSITORY_USERNAME: ((artifactory-username))
+  MVN_REPOSITORY_PASSWORD: ((artifactory-password))
+  
+run:
+  path: ci-src/.concourse/tasks/deploy-snapshot/deploy-snapshot.sh

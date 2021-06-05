@@ -65,7 +65,7 @@ public class OperatorAutoConfiguration extends AbstractConfigurationService {
       Optional<ObjectMapper> objectMapper) {
     Operator operator =
         objectMapper
-            .map(x -> new Operator(kubernetesClient, this, x))
+            .map(x -> new Operator(kubernetesClient, this))
             .orElse(new Operator(kubernetesClient, this));
     resourceControllers.forEach(r -> operator.register(processController(r)));
     return operator;

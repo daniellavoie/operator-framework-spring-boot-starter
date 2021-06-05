@@ -41,13 +41,13 @@ jobs:
     params:
       channel: ((slack-channel))
       text: |
-        Branch ((git-branch)) of StarTree Portal as been successfully built.
+        Branch ((git-branch)) of JOSDK Spring Boot Starter as been successfully built.
         ((concourse-url))/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
   on_failure:
     put: slack
     params:
       channel: ((slack-channel))
       text: |
-        <!channel> Failed to build StarTree Portal ((git-branch)) branch.
+        <!channel> Failed to build JOSDK Spring Boot Starter ((git-branch)) branch.
         ((concourse-url))/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
   
